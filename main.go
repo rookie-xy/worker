@@ -3,16 +3,13 @@ package main
 import (
     "os"
     "unsafe"
-//    "log"
 
-//    "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/configure"
-//    "github.com/rookie-xy/worker/src/worker"
     "github.com/rookie-xy/worker/src/command"
     "github.com/rookie-xy/worker/src/module"
-"fmt"
-"github.com/rookie-xy/worker/src/worker"
-"github.com/rookie-xy/worker/src/builder"
+    "github.com/rookie-xy/worker/src/worker"
+    "github.com/rookie-xy/worker/src/builder"
+    "github.com/rookie-xy/worker/src/log"
 )
 
 var (
@@ -88,9 +85,6 @@ func init() {
 }
 
 func main() {
-    if rv := resource.Value; rv != nil {
-        rv.String()
-    }
     log := log.New()
 
     worker := worker.New(log)

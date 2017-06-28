@@ -7,15 +7,15 @@ import (
     "github.com/rookie-xy/worker/src/command"
 
     "github.com/rookie-xy/modules/inputs"
-    "github.com/rookie-xy/modules/channels"
-    "github.com/rookie-xy/modules/outputs"
+
+    "github.com/rookie-xy/plugins"
 )
 
 type Builder interface {
-    Configure() map[string]prototype.Object
-   	Inputs()
-	   Channels()
-	   Outputs()
+    Configure(resource string) map[string]prototype.Object
+   	Inputs(object prototype.Object)
+	   Channels(object prototype.Object)
+	   Outputs(object prototype.Object)
 }
 
 type Director struct {
@@ -28,12 +28,15 @@ func Director(b Builder) *Director {
 
 func (r *Director) Construct(resource command.Meta) {
     // 构建配置，三大模块
+/*
     name := configure.Name
     if v := resource.Value; v != nil {
 				    name = v.GetString()
 				}
+				*/
 
-    configure := r.build.Configure(name)
+    // 返回解析完成的kv配置数据
+    configure := r.build.Configure("")
     if configure == nil {
 				    return
 				}
@@ -45,12 +48,6 @@ func (r *Director) Construct(resource command.Meta) {
 				    case inputs.Name:
 				        r.build.Inputs(value)
 
-				    case channels.Name:
-				        r.build.Channels(value)
-
-								case outputs.Name:
-				        r.build.Outputs(value)
-
 				    default:
 				    }
 				}
@@ -61,26 +58,29 @@ type WorkerBuilder struct {
 }
 
 func New(w *worker.Worker) *WorkerBuilder {
-   return &WorkerBuilder{Worker: w}
+    return &WorkerBuilder{Worker: w}
 }
 
 func (r *WorkerBuilder) Configure(resource string) map[string]prototype.Object {
-    //r.Load(configure.New(), nil)
-    c := configure.New()
+    // 通过插件获取配置方法
+/*
+    cfg := configure.New(nil)
 
-    c.GetConfigure
-
-    select {
-
-				case
-
+    if p := plugins.Configure(resource); p != nil {
+				    cfg = configure.New(p)
 				}
+
+    method := cfg.Method
+    */
 
     return nil
 }
 
 func (r *WorkerBuilder) Inputs(object prototype.Object) {
-    r.Load(inputs.New(), object)
+    input := inputs.New(r.Log)
+    input.Options = object
+
+    r.Load(input, nil)
 }
 
 func (r *WorkerBuilder) Channels(object prototype.Object) {

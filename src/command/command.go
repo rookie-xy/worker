@@ -1,7 +1,6 @@
 package command
 
 import (
-    "unsafe"
     "github.com/rookie-xy/worker/src/prototype"
     "fmt"
 )
@@ -19,7 +18,7 @@ type Item struct {
     Scope   int
     Set     SetFunc
     Offset  uintptr
-    Post    prototype.Object
+    Load    prototype.Object
 }
 
 type Meta struct {
@@ -30,7 +29,7 @@ type Meta struct {
 }
 
 func (r *Meta)GetValueString() string {
-
+    return ""
 }
 
 func List(commands []Item) {

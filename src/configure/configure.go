@@ -9,7 +9,7 @@ import (
 
 // abstract factory
 type ConfigureFactory interface {
-    GetConfigure() ConfigureMethod;
+    Method() ConfigureMethod;
 }
 
 // factory method
@@ -17,15 +17,20 @@ type ConfigureMethod interface {
     GetFile()
 }
 
+var Plugins []ConfigureMethod
+
 type Configure struct {
+    ConfigureMethod
 }
 
-func New() *Configure {
-    return &Configure{}
+func New(cm ConfigureMethod) *Configure {
+    return &Configure{
+        ConfigureMethod: cm,
+    }
 }
 
-func (r *Configure) GetConfigure(configType string) ConfigureMethod {
-    return nil
+func (r *Configure) Method(Type string) ConfigureMethod {
+    return r.ConfigureMethod
 }
 
 func SetBool(cmd *command.Item, ptr *unsafe.Pointer, obj prototype.Object) int {

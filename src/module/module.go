@@ -7,7 +7,7 @@ const (
 
 // composite
 type Module interface {
-    Load()
+    Load(key module.Module, value map[prototype.Object]prototype.Object)
     ModuleTemplate
 }
 
