@@ -20,7 +20,7 @@ type ModuleTemplate interface {
     Exit()
 }
 
-var Pool map[string]Module
+var Pool map[string]ModuleTemplate
 /*
 type Component interface {
 	Add(child Component)

@@ -4,24 +4,24 @@ import (
     "os"
     "unsafe"
 
-    "github.com/rookie-xy/worker/src/configure"
     "github.com/rookie-xy/worker/src/command"
     "github.com/rookie-xy/worker/src/module"
     "github.com/rookie-xy/worker/src/worker"
     "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/log"
+    "fmt"
 )
 
 var (
-    test     = command.Meta{ "-t", "test", false, "Test configure file" }
+    test = command.Meta{ "-t", "test", false, "Test configure file" }
 )
 
-var Commands = []command.Item{
+var items = []command.Item{
 
     { test,
       command.LINE,
       module.GLOBEL,
-      configure.SetBool,
+      command.SetObject,
       unsafe.Offsetof(test.Value),
       nil },
 
@@ -29,6 +29,10 @@ var Commands = []command.Item{
 
 func init() {
     // 选项初始化
+    for _, item := range items {
+        command.Items = append(command.Items, item)
+    }
+
     argc, argv := len(os.Args), os.Args
     for i := 1; i < argc; i++ {
 
@@ -37,14 +41,14 @@ func init() {
             //return Error
         }
 
-        for _, item := range Commands {
+        for _, item := range command.Items {
             handle := item.Set
             meta := item.Meta
 
             switch argv[i] {
 
             case meta.Flag:
-                //
+                fmt.Println(meta.Flag)
                 i++
                 handle(&item, &meta, argv[i])
                 break
@@ -53,10 +57,6 @@ func init() {
             //    command.List(Commands)
             //    exit()
             }
-
-            //fmt.Println("AAAAAAAAAAAAAAAAAAAAAAAAAAA")
-
-            //break
         }
     }
 }
@@ -72,7 +72,7 @@ func main() {
         exit()
     }
 
-    director.Construct(resource, format)
+    director.Construct()
 
     worker.Init()
 

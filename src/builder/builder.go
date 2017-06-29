@@ -4,9 +4,6 @@ import (
     "github.com/rookie-xy/worker/src/worker"
     "github.com/rookie-xy/worker/src/prototype"
     "github.com/rookie-xy/worker/src/factory"
-
-    "github.com/rookie-xy/modules/inputs"
-
 )
 
 type Builder interface {
