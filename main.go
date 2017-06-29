@@ -13,34 +13,10 @@ import (
 )
 
 var (
-    config   = command.Meta{ "-c", "config", "file", "This configure file path", }
-    resource = command.Meta{ "-r", "resource", "./usr/local/conf/worker.yaml", "Resource type" }
-    format   = command.Meta{ "-f", "format", "yaml", "Configure file format" }
     test     = command.Meta{ "-t", "test", false, "Test configure file" }
 )
 
 var Commands = []command.Item{
-
-    { config,
-      command.LINE,
-      module.GLOBEL,
-      configure.SetString,
-      unsafe.Offsetof(config.Value),
-      nil },
-
-    { resource,
-      command.LINE,
-      module.GLOBEL,
-      configure.SetString,
-      unsafe.Offsetof(resource.Value),
-      nil },
-
-    { format,
-      command.LINE,
-      module.GLOBEL,
-      configure.SetString,
-      unsafe.Offsetof(format.Value),
-      nil },
 
     { test,
       command.LINE,
@@ -48,6 +24,7 @@ var Commands = []command.Item{
       configure.SetBool,
       unsafe.Offsetof(test.Value),
       nil },
+
 }
 
 func init() {

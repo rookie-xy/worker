@@ -28,6 +28,8 @@ type Meta struct {
 				Details  string
 }
 
+var Items []Item
+
 func (r *Meta)GetValueString() string {
     return ""
 }

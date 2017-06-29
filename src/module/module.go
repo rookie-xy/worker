@@ -1,5 +1,7 @@
 package module
 
+import "github.com/rookie-xy/worker/src/prototype"
+
 const (
     GLOBEL = 2
     LOCAL = 3
@@ -7,7 +9,7 @@ const (
 
 // composite
 type Module interface {
-    Load(key module.Module, value map[prototype.Object]prototype.Object)
+    Load(key Module, value map[prototype.Object]prototype.Object)
     ModuleTemplate
 }
 
@@ -17,6 +19,8 @@ type ModuleTemplate interface {
     Main()
     Exit()
 }
+
+var Pool map[string]Module
 /*
 type Component interface {
 	Add(child Component)
