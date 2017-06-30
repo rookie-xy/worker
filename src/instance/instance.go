@@ -26,6 +26,10 @@ func Register(name string, items []command.Item, mod module.ModuleTemplate) {
 
     instance.Merge(items)
 
+    if mod == nil {
+				    return
+				}
+
     if module.Pool == nil {
 				    module.Pool = make(map[string]module.ModuleTemplate)
 				}

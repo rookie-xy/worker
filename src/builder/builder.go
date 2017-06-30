@@ -2,22 +2,23 @@ package builder
 
 import (
     "github.com/rookie-xy/worker/src/worker"
-    "github.com/rookie-xy/worker/src/prototype"
     "github.com/rookie-xy/worker/src/factory"
 )
 
 type Builder interface {
-    Configure(resource string) map[string]prototype.Object
-   	Inputs(object prototype.Object)
-	   Channels(object prototype.Object)
-	   Outputs(object prototype.Object)
+    Configure(f factory.Factory) int
+/*
+   	Inputs(f factory.Factory) int
+	   Channels(f factory.Factory) int
+	   Outputs(f factory.Factory) int
+	   */
 }
 
 type Director struct {
    	build Builder
 }
 
-func Director(b Builder) *Director {
+func Directors(b Builder) *Director {
     return &Director{build: b}
 }
 
@@ -27,7 +28,7 @@ func (r *Director) Construct() {
     f := factory.New(nil)
 
     configure := r.build.Configure(f)
-    if configure == nil {
+    if configure != 0 {
 				    return
 				}
 }
@@ -42,14 +43,14 @@ func New(w *worker.Worker) *WorkerBuilder {
 
 func (r *WorkerBuilder) Configure(f factory.Factory) int {
     if f == nil {
-				    return nil
+				    return 0
 				}
 
     configure := f.GetModule("configure")
 
     configure.Init()
 
-    go configure.Main()
+    configure.Main()
 
-    return nil
+    return 0
 }

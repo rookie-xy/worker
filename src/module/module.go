@@ -1,7 +1,5 @@
 package module
 
-import "github.com/rookie-xy/worker/src/prototype"
-
 const (
     GLOBEL = 2
     LOCAL = 3
@@ -9,7 +7,7 @@ const (
 
 // composite
 type Module interface {
-    Load(key Module, value map[prototype.Object]prototype.Object)
+    Load(m ModuleTemplate)
     ModuleTemplate
 }
 

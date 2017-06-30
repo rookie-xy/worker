@@ -23,7 +23,7 @@ type Worker struct {
     children  []module.Module
 }
 
-func New(log *log.Log) *Worker {
+func New(log log.Log) *Worker {
     return &Worker{}
 }
 

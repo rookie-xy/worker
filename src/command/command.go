@@ -13,7 +13,7 @@ const (
 type SetFunc func(cmd *Item, meta *Meta, obj prototype.Object) int
 
 type Item struct {
-    Meta    Meta
+    Meta   *Meta
     Type    int
     Scope   int
     Set     SetFunc
@@ -29,10 +29,6 @@ type Meta struct {
 }
 
 var Items []Item
-
-func (r *Meta)GetValueString() string {
-    return ""
-}
 
 func List(commands []Item) {
     fmt.Println("list")

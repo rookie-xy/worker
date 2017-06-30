@@ -9,14 +9,21 @@ import (
     "github.com/rookie-xy/worker/src/worker"
     "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/log"
-    "fmt"
 )
 
 var (
-    test = command.Meta{ "-t", "test", false, "Test configure file" }
+    format = &command.Meta{ "-f", "format", "yaml", "Configure file format" }
+    test   = &command.Meta{ "-t", "test", false, "Test configure file" }
 )
 
 var items = []command.Item{
+
+    { format,
+      command.LINE,
+      module.GLOBEL,
+      command.SetObject,
+      unsafe.Offsetof(format.Value),
+      nil },
 
     { test,
       command.LINE,
@@ -24,7 +31,6 @@ var items = []command.Item{
       command.SetObject,
       unsafe.Offsetof(test.Value),
       nil },
-
 }
 
 func init() {
@@ -35,7 +41,6 @@ func init() {
 
     argc, argv := len(os.Args), os.Args
     for i := 1; i < argc; i++ {
-
         if argv[i][0] != '-' {
             exit()
             //return Error
@@ -44,13 +49,11 @@ func init() {
         for _, item := range command.Items {
             handle := item.Set
             meta := item.Meta
-
             switch argv[i] {
 
             case meta.Flag:
-                fmt.Println(meta.Flag)
                 i++
-                handle(&item, &meta, argv[i])
+                handle(&item, meta, argv[i])
                 break
 
             //default:
@@ -67,7 +70,7 @@ func main() {
     worker := worker.New(log)
     build := builder.New(worker)
 
-    director := builder.Director(build)
+    director := builder.Directors(build)
     if director == nil {
         exit()
     }

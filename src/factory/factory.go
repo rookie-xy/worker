@@ -29,7 +29,7 @@ func (r *factory) GetModule(name string) module.Module {
         return configure.New(r.Log)
 
     case inputs.Name:
-        return inputs.New(r.Log)
+        //return inputs.New(r.Log)
 
     }
 
