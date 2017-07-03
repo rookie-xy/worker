@@ -1,5 +1,7 @@
 package input
 
+
+/*
 type Visitor interface {
 	VisitSushiBar(p *SushiBar) string
 	VisitPizzeria(p *Pizzeria) string
@@ -73,3 +75,4 @@ func (self *BurgerBar) Accept(v Visitor) string {
 func (self *BurgerBar) BuyBurger() string {
 	return "Buy burger..."
 }
+*/

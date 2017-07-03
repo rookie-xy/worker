@@ -9,6 +9,7 @@ import (
     "github.com/rookie-xy/worker/src/worker"
     "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/log"
+    "github.com/rookie-xy/worker/src/configure"
 )
 
 var (
@@ -75,13 +76,15 @@ func main() {
         exit()
     }
 
-    director.Construct()
+    configure := configure.New(log)
+    director.Construct(configure)
 
     worker.Init()
 
     worker.Main()
 
     worker.Exit()
+
 }
 
 func exit() {

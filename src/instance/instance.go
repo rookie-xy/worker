@@ -21,7 +21,7 @@ func getInstance() *singleton {
 }
 
 // flyweight
-func Register(name string, items []command.Item, mod module.ModuleTemplate) {
+func Register(scope, name string, items []command.Item, mod module.Template) {
     instance := getInstance()
 
     instance.Merge(items)
@@ -31,10 +31,11 @@ func Register(name string, items []command.Item, mod module.ModuleTemplate) {
     }
 
     if module.Pool == nil {
-        module.Pool = make(map[string]module.ModuleTemplate)
+        module.Pool = make(map[string][]module.Template)
     }
 
     if _, ok := module.Pool[name]; !ok {
+        
         module.Pool[name] =  mod
     }
 }

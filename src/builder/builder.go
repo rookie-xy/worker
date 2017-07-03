@@ -3,6 +3,9 @@ package builder
 import (
     "github.com/rookie-xy/worker/src/worker"
     "github.com/rookie-xy/worker/src/factory"
+    "github.com/rookie-xy/worker/src/configure"
+    "github.com/rookie-xy/worker/src/input"
+    "github.com/rookie-xy/worker/src/module"
 )
 
 type Builder interface {
@@ -23,17 +26,18 @@ func Directors(b Builder) *Director {
     return &Director{build: b}
 }
 
-func (r *Director) Construct() {
+func (r *Director) Construct(configure *configure.Configure) {
+    input := input.New()
 
-    f := factory.New(nil)
+    configure.Attach(input)
+
+    f := factory.New(configure)
 
     // 构建配置文件，获取配置数据
-    configure := r.build.Configure(f)
-    if configure != 0 {
-        return
-    }
+    r.build.Configure(f)
 
     // TODO 解析配置数据
+    input.Wait()
 
     // TODO 构建三大模块
 /*
@@ -55,6 +59,14 @@ func New(w *worker.Worker) *WorkerBuilder {
 }
 
 func (r *WorkerBuilder) Configure(f factory.Factory) int {
+
+    //command.Init()
+
+    configure := module.Init("configure", "name")
+
+    configure.Main()
+
+    /*
     if f != nil {
         r.Factory = f
     } else {
@@ -66,7 +78,7 @@ func (r *WorkerBuilder) Configure(f factory.Factory) int {
     configure.Init()
 
     configure.Main()
-
+    */
 
     return 0
 }

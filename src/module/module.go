@@ -7,18 +7,35 @@ const (
 
 // composite
 type Module interface {
-    Load(m ModuleTemplate)
-    ModuleTemplate
+    Load(module Template)
+    Template
 }
 
 // template
-type ModuleTemplate interface {
-    Init()
+type Template interface {
+    Init(name string) Template
     Main()
     Exit()
 }
 
-var Pool map[string]ModuleTemplate
+var Pool map[string][]Template
+
+func Init(scope, name string) Template {
+    if scope == "" || name == "" {
+        return nil
+    }
+
+    if modules, ok := Pool[scope]; ok {
+        for _, module := range modules {
+
+            if instance := module.Init(name); instance != nil {
+                return instance
+            }
+        }
+    }
+
+    return nil
+}
 /*
 type Component interface {
 	Add(child Component)
