@@ -13,17 +13,17 @@ import (
 )
 
 var (
-    format = &command.Meta{ "-f", "format", "yaml", "Configure file format" }
+    config = &command.Meta{ "-c", "config", "file", "This configure file path" }
     test   = &command.Meta{ "-t", "test", false, "Test configure file" }
 )
 
 var items = []command.Item{
 
-    { format,
+    { config,
       command.LINE,
       module.GLOBEL,
       command.SetObject,
-      unsafe.Offsetof(format.Value),
+      unsafe.Offsetof(config.Value),
       nil },
 
     { test,
@@ -32,12 +32,13 @@ var items = []command.Item{
       command.SetObject,
       unsafe.Offsetof(test.Value),
       nil },
+
 }
 
 func init() {
     // 选项初始化
     for _, item := range items {
-        command.Items = append(command.Items, item)
+        command.Pool[item.Meta.Flag] = item
     }
 
     argc, argv := len(os.Args), os.Args
@@ -45,6 +46,12 @@ func init() {
         if argv[i][0] != '-' {
             exit()
             //return Error
+        }
+
+        command.Pool[argv[i]]
+
+        switch argv[i] {
+        case command.Pool[]
         }
 
         for _, item := range command.Items {

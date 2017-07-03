@@ -28,8 +28,8 @@ func Init(scope, name string) Template {
     if modules, ok := Pool[scope]; ok {
         for _, module := range modules {
 
-            if instance := module.Init(name); instance != nil {
-                return instance
+            if run := module.Init(name); run != nil {
+                return run
             }
         }
     }

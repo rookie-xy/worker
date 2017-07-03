@@ -7,6 +7,8 @@ import (
 )
 
 type singleton struct {
+    scope string
+    name  string
 }
 
 var instance *singleton
@@ -21,12 +23,15 @@ func getInstance() *singleton {
 }
 
 // flyweight
-func Register(scope, name string, items []command.Item, mod module.Template) {
+func Register(scope, name string, items []command.Item, m module.Template) {
     instance := getInstance()
+
+    instance.scope = scope
+    instance.name = name
 
     instance.Merge(items)
 
-    if mod == nil {
+    if m == nil {
         return
     }
 
@@ -34,14 +39,21 @@ func Register(scope, name string, items []command.Item, mod module.Template) {
         module.Pool = make(map[string][]module.Template)
     }
 
-    if _, ok := module.Pool[name]; !ok {
-        
-        module.Pool[name] =  mod
+    if modules, ok := module.Pool[scope]; !ok {
+        // TODO is nothing
     }
+
+    module.Pool[scope] = append(modules, m)
 }
 
 func (r *singleton) Merge(items []command.Item) {
-    for _, item := range items {
-        command.Items = append(command.Items, item)
+
+    if command.Pool == nil {
+        command.Pool = make(map[string][]command.Item)
+
+    } else {
+        if _, ok := command.Pool[r.scope]; !ok {
+            command.Pool[r.scope] = items
+        }
     }
 }

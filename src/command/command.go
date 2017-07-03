@@ -25,10 +25,10 @@ type Meta struct {
     Flag     string
     Key      string
     Value    prototype.Object
-				Details  string
+    Details  string
 }
 
-var Items []Item
+var Pool map[string][]Item
 
 func List(commands []Item) {
     fmt.Println("list")
