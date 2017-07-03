@@ -3,7 +3,6 @@ package worker
 import (
     "github.com/rookie-xy/worker/src/module"
     "github.com/rookie-xy/worker/src/log"
-    "github.com/rookie-xy/worker/src/prototype"
 )
 
 const (
@@ -30,8 +29,8 @@ func New(log log.Log) *Worker {
 func (r *Worker) Init() {
     // 初始化各个模块, inputs, channels, outputs
     for _, module := range r.children {
-				    module.Init()
-				}
+        module.Init()
+    }
 }
 
 func (r *Worker) Main() {
@@ -74,6 +73,6 @@ func (r *Worker) Exit() {
     */
 }
 
-func (r *Worker) Load(module module.Module, value map[string]prototype.Object) {
+func (r *Worker) Load(module module.Module) {
     r.children = append(r.children, module)
 }

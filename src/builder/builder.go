@@ -7,15 +7,16 @@ import (
 
 type Builder interface {
     Configure(f factory.Factory) int
-/*
-   	Inputs(f factory.Factory) int
-	   Channels(f factory.Factory) int
-	   Outputs(f factory.Factory) int
-	   */
+    Module(n string) int
+	/*
+    Inputs(f factory.Factory) int
+    Channels(f factory.Factory) int
+    Outputs(f factory.Factory) int
+    */
 }
 
 type Director struct {
-   	build Builder
+    build Builder
 }
 
 func Directors(b Builder) *Director {
@@ -23,18 +24,30 @@ func Directors(b Builder) *Director {
 }
 
 func (r *Director) Construct() {
-    // 构建配置，三大模块
-    // 返回解析完成的kv配置数据
+
     f := factory.New(nil)
 
+    // 构建配置文件，获取配置数据
     configure := r.build.Configure(f)
     if configure != 0 {
-				    return
-				}
+        return
+    }
+
+    // TODO 解析配置数据
+
+    // TODO 构建三大模块
+/*
+    var data map[string]prototype.Object
+
+    for _, d := range data {
+
+    }
+    */
 }
 
 type WorkerBuilder struct {
-   	*worker.Worker
+    factory.Factory
+    *worker.Worker
 }
 
 func New(w *worker.Worker) *WorkerBuilder {
@@ -42,9 +55,11 @@ func New(w *worker.Worker) *WorkerBuilder {
 }
 
 func (r *WorkerBuilder) Configure(f factory.Factory) int {
-    if f == nil {
-				    return 0
-				}
+    if f != nil {
+        r.Factory = f
+    } else {
+        return -1
+    }
 
     configure := f.GetModule("configure")
 
@@ -52,5 +67,23 @@ func (r *WorkerBuilder) Configure(f factory.Factory) int {
 
     configure.Main()
 
+
     return 0
 }
+
+func (r *WorkerBuilder) Module(name string) int {
+
+    module := r.GetModule(name)
+    r.Load(module)
+
+    return 0
+}
+/*
+func (r *WorkerBuilder) Channels(f factory.Factory) int {
+    return 0
+}
+
+func (r *WorkerBuilder) Outputs(f factory.Factory) int {
+    return 0
+}
+*/

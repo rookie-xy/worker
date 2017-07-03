@@ -13,11 +13,11 @@ var instance *singleton
 var once sync.Once
 
 func getInstance() *singleton {
-   	once.Do(func() {
-		      instance = &singleton{}
-	   })
+    once.Do(func() {
+        instance = &singleton{}
+    })
 
-   	return instance
+    return instance
 }
 
 // flyweight
@@ -27,20 +27,20 @@ func Register(name string, items []command.Item, mod module.ModuleTemplate) {
     instance.Merge(items)
 
     if mod == nil {
-				    return
-				}
+        return
+    }
 
     if module.Pool == nil {
-				    module.Pool = make(map[string]module.ModuleTemplate)
-				}
+        module.Pool = make(map[string]module.ModuleTemplate)
+    }
 
     if _, ok := module.Pool[name]; !ok {
-				    module.Pool[name] =  mod
-				}
+        module.Pool[name] =  mod
+    }
 }
 
 func (r *singleton) Merge(items []command.Item) {
     for _, item := range items {
-				    command.Items = append(command.Items, item)
-				}
+        command.Items = append(command.Items, item)
+    }
 }
