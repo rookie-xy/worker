@@ -1,5 +1,5 @@
 package configure
-
+/*
 import (
     "github.com/rookie-xy/worker/src/observer"
     "github.com/rookie-xy/worker/src/prototype"
@@ -27,3 +27,4 @@ func (r *Configure) Notify() {
          observer.Update(r.Data)
     }
 }
+*/

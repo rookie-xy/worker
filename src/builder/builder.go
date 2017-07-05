@@ -4,8 +4,8 @@ import (
     "github.com/rookie-xy/worker/src/worker"
     "github.com/rookie-xy/worker/src/factory"
     "github.com/rookie-xy/worker/src/configure"
-    "github.com/rookie-xy/worker/src/input"
     "github.com/rookie-xy/worker/src/module"
+    "github.com/rookie-xy/modules/inputs"
 )
 
 type Builder interface {
@@ -27,9 +27,9 @@ func Directors(b Builder) *Director {
 }
 
 func (r *Director) Construct(configure *configure.Configure) {
-    input := input.New()
+    inputs := inputs.New(configure.Log)
 
-    configure.Attach(input)
+    configure.Attach(inputs)
 
     f := factory.New(configure)
 
@@ -37,9 +37,10 @@ func (r *Director) Construct(configure *configure.Configure) {
     r.build.Configure(f)
 
     // TODO 解析配置数据
-    input.Wait()
 
     // TODO 构建三大模块
+
+    command.
 /*
     var data map[string]prototype.Object
 
@@ -84,6 +85,7 @@ func (r *WorkerBuilder) Configure(f factory.Factory) int {
 }
 
 func (r *WorkerBuilder) Module(name string) int {
+    r.Load()
 
     module := r.GetModule(name)
     r.Load(module)
