@@ -3,13 +3,14 @@ package observer
 import "github.com/rookie-xy/worker/src/prototype"
 
 type Subject interface {
-   	Attach(observer Observer)
-   	Notify()
+    Attach(observer Observer)
+    Notify()
 }
 
 type Observer interface {
    	//Update(state string)
     Update(data prototype.Object)
+    //Create(data prototype.Object)
 }
 
 /*

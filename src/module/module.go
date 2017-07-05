@@ -13,7 +13,7 @@ type Module interface {
 
 // template
 type Template interface {
-    Init(name string) Template
+    //Init(name string) Template
     Main()
     Exit()
 }
