@@ -3,6 +3,7 @@ package worker
 import (
     "github.com/rookie-xy/worker/src/module"
     "github.com/rookie-xy/worker/src/log"
+    "github.com/rookie-xy/worker/src/cycle"
 )
 
 const (
@@ -16,10 +17,11 @@ const (
     EXIT = 3
 )
 
+var Pool []module.Module
+
 // facade
 type Worker struct {
     log.Log
-    children  []module.Module
 }
 
 func New(log log.Log) *Worker {
@@ -27,24 +29,17 @@ func New(log log.Log) *Worker {
 }
 
 func (r *Worker) Init() {
-    // 初始化各个模块, inputs, channels, outputs
-    for _, module := range r.children {
-        module.Init()
-    }
+    // 初始化信号
 }
 
 func (r *Worker) Main() {
-    /*
     // 启动，监控各个模块
-    cycle := cycle.New()
-
-    for _, module := range r.children {
-        cycle.Start(module.Main, nil)
+    for _, run := range Pool {
+        go run.Main()
     }
 
     for ;; {
         // 监控inputs, channel, output等数据
-
         select {
 
         case cycle.Stop():
@@ -53,7 +48,6 @@ func (r *Worker) Main() {
 
         }
     }
-    */
 }
 
 func (r *Worker) Exit() {
@@ -74,5 +68,5 @@ func (r *Worker) Exit() {
 }
 
 func (r *Worker) Load(module module.Module) {
-    r.children = append(r.children, module)
+    Pool = append(Pool, module)
 }

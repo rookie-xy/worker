@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af94c93d-bc83-4f67-a0fb-17682d92d410" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/builder/builder.go" afterPath="$PROJECT_DIR$/src/builder/builder.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/configure/configure.go" afterPath="$PROJECT_DIR$/src/configure/configure.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/worker/worker.go" afterPath="$PROJECT_DIR$/src/worker/worker.go" />
     </list>
     <ignored path="worker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,6 +37,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="92" column="13" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
+              <folding>
+                <marker date="1499321482834" expanded="true" signature="369:375" ph="(...)" />
+                <marker date="1499321482834" expanded="true" signature="1172:1182" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="worker.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/worker/worker.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="987">
+              <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chain_of_responsibility.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/chain_of_responsibility.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="instance.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/instance/instance.go">
           <provider selected="true" editor-type-id="text-editor">
@@ -50,20 +83,20 @@
       <file leaf-file-name="modules.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../modules/inputs/modules.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+            <state relative-caret-position="206">
+              <caret line="105" column="10" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="builder.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="builder.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/builder/builder.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+            <state relative-caret-position="441">
+              <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
               <folding>
-                <element signature="e#17#253#0" expanded="true" />
+                <element signature="e#17#249#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +105,7 @@
       <file leaf-file-name="factory.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/factory/factory.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="-1">
               <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
               <folding>
                 <element signature="e#17#224#0" expanded="true" />
@@ -81,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="input.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/input/input.go">
+      <file leaf-file-name="module.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/module.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="336">
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -138,20 +171,20 @@
         <option value="$PROJECT_DIR$/src/log/decorator.go" />
         <option value="$PROJECT_DIR$/../modules/configure/src/file/main.go" />
         <option value="$PROJECT_DIR$/src/command/command.go" />
-        <option value="$PROJECT_DIR$/src/worker/worker.go" />
         <option value="$PROJECT_DIR$/worker.iml" />
         <option value="$PROJECT_DIR$/src/instance/instance.go" />
         <option value="$PROJECT_DIR$/../modules/inputs/main.go" />
         <option value="$PROJECT_DIR$/src/input/visitor.go" />
         <option value="$PROJECT_DIR$/src/factory/factory.go" />
         <option value="$PROJECT_DIR$/../modules/configure/main.go" />
-        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/src/observer/observer.go" />
         <option value="$PROJECT_DIR$/src/input/input.go" />
         <option value="$PROJECT_DIR$/src/module/module.go" />
         <option value="$PROJECT_DIR$/src/configure/configure.go" />
         <option value="$PROJECT_DIR$/../modules/inputs/modules.go" />
+        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/src/builder/builder.go" />
+        <option value="$PROJECT_DIR$/src/worker/worker.go" />
       </list>
     </option>
   </component>
@@ -205,7 +238,56 @@
     <panes>
       <pane id="Scratches" />
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="factory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
@@ -421,7 +503,7 @@
       <workItem from="1499088500638" duration="82000" />
       <workItem from="1499088626976" duration="2781000" />
       <workItem from="1499139400192" duration="4034000" />
-      <workItem from="1499237381583" duration="7532000" />
+      <workItem from="1499237381583" duration="17575000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1498648610794</created>
@@ -455,14 +537,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74969000" />
+    <option name="totallyTimeSpent" value="85012000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18804781" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18804781" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32766616" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
@@ -552,14 +634,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#14#319#0" expanded="false" />
-            <marker date="1499236990865" expanded="true" signature="325:331" ph="(...)" />
-            <marker date="1499236990865" expanded="true" signature="1128:1138" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1128:1510" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1128:1512" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1183:1504" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1273:1494" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1303:1390" ph="..." />
+            <marker date="1499321482834" expanded="true" signature="369:375" ph="(...)" />
+            <marker date="1499321482834" expanded="true" signature="1172:1182" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -597,7 +673,7 @@
         <state relative-caret-position="861">
           <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
           <folding>
-            <element signature="e#17#253#0" expanded="true" />
+            <element signature="e#17#249#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -614,14 +690,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#14#319#0" expanded="false" />
-            <marker date="1499236990865" expanded="true" signature="325:331" ph="(...)" />
-            <marker date="1499236990865" expanded="true" signature="1128:1138" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1128:1510" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1128:1512" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1183:1504" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1273:1494" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1303:1390" ph="..." />
+            <marker date="1499321482834" expanded="true" signature="369:375" ph="(...)" />
+            <marker date="1499321482834" expanded="true" signature="1172:1182" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -631,7 +701,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#253#0" expanded="true" />
+            <element signature="e#17#249#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -641,14 +711,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#14#319#0" expanded="false" />
-            <marker date="1499236990865" expanded="true" signature="325:331" ph="(...)" />
-            <marker date="1499236990865" expanded="true" signature="1128:1138" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1128:1510" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1128:1512" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1183:1504" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1273:1494" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1303:1390" ph="..." />
+            <marker date="1499321482834" expanded="true" signature="369:375" ph="(...)" />
+            <marker date="1499321482834" expanded="true" signature="1172:1182" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -658,15 +722,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#17#253#0" expanded="true" />
+            <element signature="e#17#249#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chain_of_responsibility.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -793,23 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
-          <folding>
-            <element signature="e#14#319#0" expanded="false" />
-            <marker date="1499236990865" expanded="true" signature="325:331" ph="(...)" />
-            <marker date="1499236990865" expanded="true" signature="1128:1138" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1128:1510" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1128:1512" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1183:1504" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1273:1494" ph="{...}" />
-            <marker date="1499236990865" expanded="true" signature="1303:1390" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/observer/observer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -822,14 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/worker/worker.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1092">
-          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -858,32 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/module.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/factory/factory.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding>
-            <element signature="e#17#224#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../modules/inputs/modules.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/command/command.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
@@ -900,13 +906,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/module.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../modules/inputs/modules.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="105" column="10" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chain_of_responsibility.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/factory/factory.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding>
+            <element signature="e#17#224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/builder/builder.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+        <state relative-caret-position="441">
+          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
           <folding>
-            <element signature="e#17#253#0" expanded="true" />
+            <element signature="e#17#249#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="92" column="13" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
+          <folding>
+            <marker date="1499321482834" expanded="true" signature="369:375" ph="(...)" />
+            <marker date="1499321482834" expanded="true" signature="1172:1182" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/worker/worker.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>

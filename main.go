@@ -10,6 +10,7 @@ import (
     "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/log"
     "github.com/rookie-xy/worker/src/configure"
+    "github.com/rookie-xy/worker/src/cycle"
 )
 
 var (
@@ -86,12 +87,14 @@ func main() {
     configure := configure.New(log)
     director.Construct(configure)
 
-    worker.Init()
+    cycle := cycle.New()
+    signal := signal.New()
 
-    worker.Main()
+    worker.Init(log)
 
-    worker.Exit()
+    worker.Main(cycle)
 
+    worker.Exit(signale)
 }
 
 func exit() {
