@@ -4,7 +4,7 @@ import (
     "github.com/rookie-xy/worker/src/configure"
     "github.com/rookie-xy/worker/src/module"
 
-   configure_module "github.com/rookie-xy/modules/configure"
+    "github.com/rookie-xy/modules/configure"
     "github.com/rookie-xy/modules/inputs"
 )
 
@@ -14,24 +14,28 @@ type Factory interface {
 }
 
 type factory struct {
-    *configure.Configure
+    log.Log
 }
 
-func New(c *configure.Configure) *factory {
+func New(log log.Log) *factory {
     return &factory{
-        Configure: c,
+        Log: log,
     }
 }
 
 func (r *factory) GetModule(name string) module.Module {
+
+    if name == "" {
+        return nil
+    }
+
     switch name {
 
-    case configure_module.Name:
-        return configure_module.New(r.Configure)
+    case configure.Name:
+        return module.Pool[name].Init
 
     case inputs.Name:
-        return inputs.New(r.Log)
-
+        return module.Pool[name].Init
     }
 
     return nil

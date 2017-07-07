@@ -13,13 +13,47 @@ type Module interface {
 
 // template
 type Template interface {
-    //Init(name string) Template
     Main()
-    Exit()
+    Exit(code int)
 }
 
 var Pool map[string][]Template
+var Init map[string]func()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 func Init(scope, name string) Template {
     if scope == "" || name == "" {
         return nil
@@ -36,6 +70,7 @@ func Init(scope, name string) Template {
 
     return nil
 }
+*/
 /*
 type Component interface {
 	Add(child Component)

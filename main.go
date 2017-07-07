@@ -11,21 +11,15 @@ import (
     "github.com/rookie-xy/worker/src/log"
     "github.com/rookie-xy/worker/src/configure"
     "github.com/rookie-xy/worker/src/cycle"
+    "github.com/rookie-xy/worker/src/run"
 )
 
 var (
-    config = &command.Meta{ "-c", "config", "file", "This configure file path" }
+    //config = &command.Meta{ "-c", "config", "file", "This configure file path" }
     test   = &command.Meta{ "-t", "test", false, "Test configure file" }
 )
 
 var items = []command.Item{
-
-    { config,
-      command.LINE,
-      module.GLOBEL,
-      command.SetObject,
-      unsafe.Offsetof(config.Value),
-      nil },
 
     { test,
       command.LINE,
@@ -76,25 +70,19 @@ func init() {
 func main() {
     log := log.New()
 
-    worker := worker.New(log)
-    build := builder.New(worker)
+    run := run.New(log)
+    build := builder.New(run)
 
     director := builder.Directors(build)
     if director == nil {
         exit()
     }
 
-    configure := configure.New(log)
-    director.Construct(configure)
+    director.Construct()
 
-    cycle := cycle.New()
-    signal := signal.New()
+    run.Main()
 
-    worker.Init(log)
-
-    worker.Main(cycle)
-
-    worker.Exit(signale)
+    run.Exit(0)
 }
 
 func exit() {

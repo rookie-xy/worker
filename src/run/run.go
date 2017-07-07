@@ -1,9 +1,9 @@
-package worker
+package run
 
 import (
-    "github.com/rookie-xy/worker/src/module"
-    "github.com/rookie-xy/worker/src/log"
-    "github.com/rookie-xy/worker/src/cycle"
+    "github.com/rookie-xy/run/src/module"
+    "github.com/rookie-xy/run/src/log"
+    "github.com/rookie-xy/run/src/cycle"
 )
 
 const (
@@ -17,22 +17,17 @@ const (
     EXIT = 3
 )
 
-var Pool []module.Module
-
 // facade
-type Worker struct {
+type Run struct {
     log.Log
+    children []module.Module
 }
 
-func New(log log.Log) *Worker {
-    return &Worker{}
+func New(log log.Log) *Run {
+    return &Run{}
 }
 
-func (r *Worker) Init() {
-    // 初始化信号
-}
-
-func (r *Worker) Main() {
+func (r *Run) Main() {
     // 启动，监控各个模块
     for _, run := range Pool {
         go run.Main()
@@ -50,7 +45,7 @@ func (r *Worker) Main() {
     }
 }
 
-func (r *Worker) Exit() {
+func (r *Run) Exit(code int) {
     // 重新加载
     /*
     select {
@@ -67,6 +62,6 @@ func (r *Worker) Exit() {
     */
 }
 
-func (r *Worker) Load(module module.Module) {
-    Pool = append(Pool, module)
+func (r *Run) Load(module module.Module) {
+    r.children = append(r.children, module)
 }
