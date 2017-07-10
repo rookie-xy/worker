@@ -1,30 +1,19 @@
 package configure
-/*
-import (
-    "github.com/rookie-xy/worker/src/observer"
-    "github.com/rookie-xy/worker/src/prototype"
-    "github.com/rookie-xy/worker/src/log"
-)
 
-type Configure struct {
-    log.Log
-    observers []observer.Observer
-    Data prototype.Object
+import "github.com/rookie-xy/worker/src/module"
+
+type Configure interface {
+    GetModule() module.Module
 }
 
-func New(log log.Log) *Configure {
-    return &Configure{
-        Log: log,
-    }
+type configure struct {
+
 }
 
-func (r *Configure) Attach(obs observer.Observer) {
-    r.observers = append(r.observers, obs)
+func New() *configure {
+    return &configure{}
 }
 
-func (r *Configure) Notify() {
-    for _, observer := range r.observers {
-         observer.Update(r.Data)
-    }
+func (r *configure) GetModule() module.Module {
+    return nil
 }
-*/

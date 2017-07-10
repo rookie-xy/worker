@@ -1,137 +1,56 @@
 package module
 
-const (
-    GLOBEL = 2
-    LOCAL = 3
+import (
+    "fmt"
+	"github.com/rookie-xy/worker/src/configure"
 )
 
-// composite
 type Module interface {
-    Load(module Template)
-    Template
-}
-
-// template
-type Template interface {
+    Init()
     Main()
     Exit(code int)
 }
 
-var Pool map[string][]Template
-var Init map[string]func()
+type module struct {
+    configure.Configure
+    num  int
+    modules []Module
+}
 
+func New() *module {
+    return &module{
+        num: -1,
+        Configure: configure.New(),
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-func Init(scope, name string) Template {
-    if scope == "" || name == "" {
-        return nil
+func (r *module) Init() {
+    if module := r.GetModule(); module != nil {
+        module.Init()
+        module.Main()
     }
 
-    if modules, ok := Pool[scope]; ok {
-        for _, module := range modules {
-
-            if run := module.Init(name); run != nil {
-                return run
-            }
-        }
+    if r.num <= 0 {
+        fmt.Println("the module is nil")
+        return
     }
 
-    return nil
-}
-*/
-/*
-type Component interface {
-	Add(child Component)
-	Name() string
-	Childs() []Component
-	Print(prefix string) string
+    for _, module := range r.modules {
+        module.Init()
+    }
 }
 
-type Directory struct {
-	name   string
-	childs []Component
+func (r *module) Main() {
+    if r.num <= 0 {
+        fmt.Println("the module is nil")
+        return
+    }
+
+    for _, module := range r.modules {
+        module.Main()
+    }
 }
 
-func (self *Directory) Add(child Component) {
-	self.childs = append(self.childs, child)
+func (r *module) Exit(code int) {
+    return
 }
-
-func (self *Directory) Name() string {
-	return self.name
-}
-
-func (self *Directory) Childs() []Component {
-	return self.childs
-}
-
-func (self *Directory) Print(prefix string) string {
-	result := prefix + "/" + self.Name() + "\n"
-	for _, val := range self.Childs() {
-		result += val.Print(prefix + "/" + self.Name())
-	}
-	return result
-}
-
-type File struct {
-	name   string
-}
-
-func (self *File) Add(child Component) {
-}
-
-func (self *File) Name() string {
-	return self.name
-}
-
-func (self *File) Childs() []Component {
-	return []Component{}
-}
-
-func (self *File) Print(prefix string) string {
-	return prefix + "/" + self.Name() + "\n"
-}
-
-func NewDirectory(name string) *Directory {
-	return &Directory{
-		name: name,
-	}
-}
-
-func NewFile(name string) *File {
-	return &File{
-		name: name,
-	}
-}
-*/
