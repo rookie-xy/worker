@@ -1,19 +1,27 @@
 package configure
 
-import "github.com/rookie-xy/worker/src/module"
+var Event chan []byte = make(chan []byte)
 
-type Configure interface {
-    GetModule() module.Module
+/*
+type Configure struct {
+    log.Log
+    observers []observer.Observer
+    Data prototype.Object
 }
 
-type configure struct {
-
+func New(log log.Log) *Configure {
+    return &Configure{
+        Log: log,
+    }
 }
 
-func New() *configure {
-    return &configure{}
+func (r *Configure) Attach(obs observer.Observer) {
+    r.observers = append(r.observers, obs)
 }
 
-func (r *configure) GetModule() module.Module {
-    return nil
+func (r *Configure) Notify() {
+    for _, observer := range r.observers {
+         observer.Update(r.Data)
+    }
 }
+*/

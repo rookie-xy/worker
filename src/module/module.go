@@ -1,56 +1,88 @@
 package module
 
-import (
-    "fmt"
-	"github.com/rookie-xy/worker/src/configure"
+import "github.com/rookie-xy/worker/src/log"
+
+const (
+    GLOBEL = 2
+    LOCAL = 3
 )
 
+// composite
 type Module interface {
+    Load(module Template)
+    Template
+}
+
+// template
+type Template interface {
     Init()
     Main()
     Exit(code int)
 }
 
+var Pool map[string][]Template
+var News map[string]func(log log.Log) Template
+
 type module struct {
-    configure.Configure
-    num  int
-    modules []Module
+    log.Log
+    configure Module
+    modules   []Module
 }
 
-func New() *module {
+func New(log log.Log) *module {
     return &module{
-        num: -1,
-        Configure: configure.New(),
+        Log: log,
     }
 }
 
 func (r *module) Init() {
-    if module := r.GetModule(); module != nil {
-        module.Init()
-        module.Main()
-    }
-
-    if r.num <= 0 {
-        fmt.Println("the module is nil")
-        return
-    }
-
     for _, module := range r.modules {
-        module.Init()
+        if module != nil {
+            module.Init()
+        }
     }
 }
 
 func (r *module) Main() {
-    if r.num <= 0 {
-        fmt.Println("the module is nil")
-        return
+    for _, module := range r.modules {
+        if module != nil {
+            go module.Main()
+        }
     }
 
-    for _, module := range r.modules {
-        module.Main()
+    for {
+        select {
+
+        }
     }
 }
 
 func (r *module) Exit(code int) {
-    return
+    for _, module := range r.modules {
+        module.Exit(code)
+    }
+}
+
+func (r *module) Load(module Template) {
+    if module != nil {
+        r.modules = append(r.modules, module)
+    }
+}
+
+func (r *module) Configure(configure Module) int {
+    if configure != nil {
+        r.configure = configure
+
+    } else {
+        return -1
+    }
+
+    r.configure.Init()
+    r.configure.Main()
+
+    return 0
+}
+
+func Create(name string) Template {
+    return News[name]
 }
