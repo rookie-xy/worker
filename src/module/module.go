@@ -1,6 +1,9 @@
 package module
 
-import "github.com/rookie-xy/worker/src/log"
+import (
+    "github.com/rookie-xy/worker/src/log"
+    "fmt"
+)
 
 const (
     GLOBEL = 2
@@ -20,8 +23,8 @@ type Template interface {
     Exit(code int)
 }
 
-var Pool map[string][]Template
-var News map[string]func(log log.Log) Template
+type New func(log log.Log) Template
+var Pool map[string]*New
 
 type module struct {
     log.Log
@@ -83,6 +86,19 @@ func (r *module) Configure(configure Module) int {
     return 0
 }
 
-func Create(name string) Template {
-    return News[name]
+func Create(name string, log log.Log) Template {
+    if name != "" {
+        if this, ok := Pool[name]; ok {
+            if new := *this; new != nil {
+                return new(log)
+            } else {
+                fmt.Println("New func is nil")
+            }
+
+        } else {
+            fmt.Println("Not found key")
+        }
+    }
+
+    return nil
 }

@@ -23,7 +23,7 @@ func getInstance() *singleton {
 }
 
 // flyweight
-func Register(scope, name string, items []command.Item, m module.Template) {
+func Module(scope, name string, items []command.Item, new module.New) {
     instance := getInstance()
 
     instance.scope = scope
@@ -31,19 +31,25 @@ func Register(scope, name string, items []command.Item, m module.Template) {
 
     instance.Merge(items)
 
-    if m == nil {
+    if new == nil {
+        return
+    }
+
+    key := ""
+    if scope != key && name != key {
+        key = scope+"_"+name
+
+    } else {
         return
     }
 
     if module.Pool == nil {
-        module.Pool = make(map[string][]module.Template)
+        module.Pool = make(map[string]*module.New)
     }
 
-    if modules, ok := module.Pool[scope]; !ok {
-        // TODO is nothing
+    if this, ok := module.Pool[key]; !ok {
+        *this = new
     }
-
-    module.Pool[scope] = append(modules, m)
 }
 
 func (r *singleton) Merge(items []command.Item) {

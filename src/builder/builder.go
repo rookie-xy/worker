@@ -3,6 +3,7 @@ package builder
 import (
     "github.com/rookie-xy/worker/src/module"
     "github.com/rookie-xy/modules/configure"
+    "github.com/rookie-xy/worker/src/log"
 )
 
 type Builder interface {
@@ -11,6 +12,7 @@ type Builder interface {
 }
 
 type Director struct {
+    log.Log
     build Builder
 }
 
@@ -23,7 +25,7 @@ func (r *Director) Construct(core []string) {
     configure := configure.New(nil)
     if configure != nil {
         for _, name := range core {
-            if module := module.Create(name); module != nil {
+            if module := module.Create(name, r.Log); module != nil {
                 configure.Attach(module)
                 r.build.Load(module)
             }
@@ -32,7 +34,6 @@ func (r *Director) Construct(core []string) {
     } else {
         return
     }
-
 
     r.build.Configure(configure)
 }
