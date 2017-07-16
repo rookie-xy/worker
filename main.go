@@ -35,8 +35,7 @@ func init() {
     argc, argv := len(os.Args), os.Args
     for i := 1; i < argc; i++ {
         if argv[i][0] != '-' {
-            exit()
-            //return Error
+            exit(-1)
         }
 
         command.Pool[argv[i]]
@@ -86,6 +85,6 @@ func main() {
     module.Exit(0)
 }
 
-func exit() {
-    os.Exit(-1)
+func exit(code int) {
+    os.Exit(code)
 }

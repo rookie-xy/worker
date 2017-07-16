@@ -1,4 +1,4 @@
-package initial
+package register
 
 import (
     "sync"
@@ -6,9 +6,8 @@ import (
     "github.com/rookie-xy/worker/src/module"
 )
 
+// singleton
 type singleton struct {
-    scope string
-    name  string
 }
 
 var instance *singleton
@@ -24,16 +23,7 @@ func getInstance() *singleton {
 
 // flyweight
 func Module(scope, name string, items []command.Item, new module.New) {
-    instance := getInstance()
-
-    instance.scope = scope
-    instance.name = name
-
-    instance.Merge(items)
-
-    if new == nil {
-        return
-    }
+    merge := getInstance()
 
     key := ""
     if scope != key && name != key {
@@ -43,23 +33,35 @@ func Module(scope, name string, items []command.Item, new module.New) {
         return
     }
 
-    if module.Pool == nil {
-        module.Pool = make(map[string]*module.New)
+    if l := len(items); l <= 0 {
+        return
+    } else {
+        merge.Command(key, items)
     }
 
-    if this, ok := module.Pool[key]; !ok {
-        *this = new
+    if new != nil {
+        merge.Module(key, new)
     }
 }
 
-func (r *singleton) Merge(items []command.Item) {
-
+func (r *singleton) Command(key string, value []command.Item) {
     if command.Pool == nil {
         command.Pool = make(map[string][]command.Item)
 
     } else {
-        if _, ok := command.Pool[r.scope]; !ok {
-            command.Pool[r.scope] = items
+        if _, ok := command.Pool[key]; !ok {
+            command.Pool[key] = value
+        }
+    }
+}
+
+func (r *singleton) Module(key string, value module.New) {
+    if module.Pool == nil {
+        module.Pool = make(map[string]*module.New)
+
+    } else {
+        if this, ok := module.Pool[key]; !ok {
+            *this = value
         }
     }
 }
