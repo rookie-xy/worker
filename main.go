@@ -8,7 +8,7 @@ import (
     "github.com/rookie-xy/worker/src/module"
     "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/log"
-    "github.com/rookie-xy/modules/inputs"
+    "fmt"
 )
 
 var (
@@ -19,7 +19,7 @@ var commands = []command.Item{
 
     { test,
       command.LINE,
-      module.GLOBEL,
+      "",
       command.SetObject,
       unsafe.Offsetof(test.Value),
       nil },
@@ -29,7 +29,7 @@ var commands = []command.Item{
 func init() {
     // 选项初始化
     for _, item := range commands {
-        command.Pool[item.Meta.Flag] = item
+        command.Pool = append(command.Pool, item)
     }
 
     argc, argv := len(os.Args), os.Args
@@ -38,33 +38,17 @@ func init() {
             exit(-1)
         }
 
-        command.Pool[argv[i]]
-
+        fmt.Println(argv[i])
+        /*
         switch argv[i] {
-        case command.Pool[]
         }
-
-        for _, item := range command.Items {
-            handle := item.Set
-            meta := item.Meta
-            switch argv[i] {
-
-            case meta.Flag:
-                i++
-                handle(&item, meta, argv[i])
-                break
-
-            //default:
-            //    command.List(Commands)
-            //    exit()
-            }
-        }
+        */
     }
 }
 
 func main() {
     core := []string{
-        inputs.Name,
+        module.Inputs,
     }
 
     log := log.New()
@@ -73,7 +57,7 @@ func main() {
 
     director := builder.Directors(module)
     if director == nil {
-        exit()
+        exit(-1)
     }
 
     director.Construct(core)

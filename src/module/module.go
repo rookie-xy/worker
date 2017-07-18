@@ -6,8 +6,10 @@ import (
 )
 
 const (
-    GLOBEL = 2
-    LOCAL = 3
+    Configure = "configure"
+    Inputs = "inputs"
+    Outputs = "outputs"
+    Channels = "channels"
 )
 
 // composite
@@ -23,13 +25,13 @@ type Template interface {
     Exit(code int)
 }
 
-type New func(log log.Log) Template
-var Pool map[string]*New
+type NewFunc func(log log.Log) Template
+var Pool map[string]*NewFunc
 
 type module struct {
     log.Log
     configure Module
-    modules   []Module
+    modules   []Template
 }
 
 func New(log log.Log) *module {

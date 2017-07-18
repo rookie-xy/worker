@@ -15,7 +15,7 @@ type SetFunc func(cmd *Item, meta *Meta, obj prototype.Object) int
 type Item struct {
     Meta   *Meta
     Type    int
-    Scope   int
+    Scope   string
     Set     SetFunc
     Offset  uintptr
     Load    prototype.Object
@@ -28,7 +28,7 @@ type Meta struct {
     Details  string
 }
 
-var Pool map[string][]Item
+var Pool []Item
 
 func List(commands []Item) {
     fmt.Println("list")

@@ -22,7 +22,7 @@ func getInstance() *singleton {
 }
 
 // flyweight
-func Module(scope, name string, items []command.Item, new module.New) {
+func Module(scope, name string, items []command.Item, new module.NewFunc) {
     merge := getInstance()
 
     key := ""
@@ -45,6 +45,11 @@ func Module(scope, name string, items []command.Item, new module.New) {
 }
 
 func (r *singleton) Command(key string, value []command.Item) {
+    for _, e := range value {
+        command.Pool = append(command.Pool, e)
+    }
+
+    /*
     if command.Pool == nil {
         command.Pool = make(map[string][]command.Item)
 
@@ -53,6 +58,7 @@ func (r *singleton) Command(key string, value []command.Item) {
             command.Pool[key] = value
         }
     }
+    */
 }
 
 func (r *singleton) Module(key string, value module.New) {
