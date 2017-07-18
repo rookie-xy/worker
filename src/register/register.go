@@ -48,26 +48,17 @@ func (r *singleton) Command(key string, value []command.Item) {
     for _, e := range value {
         command.Pool = append(command.Pool, e)
     }
-
-    /*
-    if command.Pool == nil {
-        command.Pool = make(map[string][]command.Item)
-
-    } else {
-        if _, ok := command.Pool[key]; !ok {
-            command.Pool[key] = value
-        }
-    }
-    */
 }
 
-func (r *singleton) Module(key string, value module.New) {
+func (r *singleton) Module(key string, value module.NewFunc) {
     if module.Pool == nil {
-        module.Pool = make(map[string]*module.New)
+        module.Pool = make(map[string]*module.NewFunc)
 
     } else {
         if this, ok := module.Pool[key]; !ok {
-            *this = value
+            if this == nil {
+                this = &value
+            }
         }
     }
 }

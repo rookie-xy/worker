@@ -88,7 +88,7 @@ func (r *module) Configure(configure Module) int {
     return 0
 }
 
-func Create(name string, log log.Log) Template {
+func News(name string, log log.Log) Template {
     if name != "" {
         if this, ok := Pool[name]; ok {
             if new := *this; new != nil {

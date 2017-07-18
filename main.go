@@ -9,6 +9,9 @@ import (
     "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/log"
     "fmt"
+    "github.com/rookie-xy/modules/inputs"
+"github.com/rookie-xy/worker/src/observer"
+    "github.com/rookie-xy-bak/worker/src/prototype"
 )
 
 var (
@@ -39,6 +42,7 @@ func init() {
         }
 
         fmt.Println(argv[i])
+        i++
         /*
         switch argv[i] {
         }
@@ -47,11 +51,11 @@ func init() {
 }
 
 func main() {
-    core := []string{
-        module.Inputs,
-    }
-
     log := log.New()
+
+    core := map[string]prototype.Object{
+        module.Inputs: inputs.New(log),
+    }
 
     module := module.New(log)
 
