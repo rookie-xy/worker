@@ -10,7 +10,7 @@ const (
     FILE = 2
 )
 
-type SetFunc func(cmd *Item, meta *Meta, obj prototype.Object) int
+type SetFunc func(cmd *Item, meta *Meta, val prototype.Object) int
 
 type Item struct {
     Meta   *Meta
@@ -30,12 +30,30 @@ type Meta struct {
 
 var Pool []Item
 
-func List(commands []Item) {
+func List() {
     fmt.Println("list")
 }
 
-func SetObject(cmd *Item, meta *Meta, obj prototype.Object) int {
-    meta.Value = obj
+func Setup(flag, value string) int {
+    for _, item := range Pool {
+
+        if item.Type != LINE || item.Meta.Flag != flag {
+            continue
+        }
+
+        if item.Set(&item, item.Meta, value) == -1 {
+            fmt.Println("error")
+            return -1
+        }
+
+        return 0
+    }
+
+    return -1
+}
+
+func SetObject(cmd *Item, meta *Meta, value prototype.Object) int {
+    meta.Value = value
     return 0
 }
 

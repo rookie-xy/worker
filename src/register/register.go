@@ -54,11 +54,9 @@ func (r *singleton) Module(key string, value module.NewFunc) {
     if module.Pool == nil {
         module.Pool = make(map[string]*module.NewFunc)
 
-    } else {
-        if this, ok := module.Pool[key]; !ok {
-            if this == nil {
-                this = &value
-            }
-        }
+    }
+
+    if _, ok := module.Pool[key]; !ok {
+        module.Pool[key] = &value
     }
 }

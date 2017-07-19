@@ -8,10 +8,9 @@ import (
     "github.com/rookie-xy/worker/src/module"
     "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/log"
-    "fmt"
     "github.com/rookie-xy/modules/inputs"
 "github.com/rookie-xy/worker/src/observer"
-    "github.com/rookie-xy-bak/worker/src/prototype"
+    "fmt"
 )
 
 var (
@@ -22,7 +21,7 @@ var commands = []command.Item{
 
     { test,
       command.LINE,
-      "",
+      module.Worker,
       command.SetObject,
       unsafe.Offsetof(test.Value),
       nil },
@@ -41,19 +40,19 @@ func init() {
             exit(-1)
         }
 
-        fmt.Println(argv[i])
-        i++
-        /*
-        switch argv[i] {
+        flag, value := argv[i], argv[i + 1]
+        if ret := command.Setup(flag, value); ret != 0 {
+            fmt.Println(value)
         }
-        */
+
+        i++
     }
 }
 
 func main() {
     log := log.New()
 
-    core := map[string]prototype.Object{
+    core := map[string]observer.Observer{
         module.Inputs: inputs.New(log),
     }
 

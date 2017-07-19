@@ -6,6 +6,7 @@ import (
 )
 
 const (
+    Worker = "worker"
     Configure = "configure"
     Inputs = "inputs"
     Outputs = "outputs"
@@ -88,19 +89,22 @@ func (r *module) Configure(configure Module) int {
     return 0
 }
 
-func News(name string, log log.Log) Template {
-    if name != "" {
-        if this, ok := Pool[name]; ok {
-            if new := *this; new != nil {
-                return new(log)
-            } else {
-                fmt.Println("New func is nil")
-            }
-
-        } else {
-            fmt.Println("Not found key")
-        }
+func Setup(key string, log log.Log) Template {
+    if key == "" {
+        goto J_RET
     }
 
+    if this, ok := Pool[key]; ok {
+        if new := *this; new != nil {
+            return new(log)
+        } else {
+            fmt.Println("New func is nil")
+        }
+
+    } else {
+        fmt.Println("Not found key: ", key)
+    }
+
+J_RET:
     return nil
 }
