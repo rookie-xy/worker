@@ -3,6 +3,7 @@ package command
 import (
     "github.com/rookie-xy/worker/src/prototype"
     "fmt"
+    "github.com/rookie-xy/worker/src/state"
 )
 
 const (
@@ -30,10 +31,6 @@ type Meta struct {
 
 var Pool []Item
 
-func List() {
-    fmt.Println("list")
-}
-
 func Setup(flag, value string) int {
     for _, item := range Pool {
 
@@ -41,20 +38,42 @@ func Setup(flag, value string) int {
             continue
         }
 
-        if item.Set(&item, item.Meta, value) == -1 {
-            fmt.Println("error")
-            return -1
-        }
-
-        return 0
+        return item.Set(&item, item.Meta, value)
     }
 
-    return -1
+    return state.Error
 }
 
-func SetObject(cmd *Item, meta *Meta, value prototype.Object) int {
+func List(_ *Item, _ *Meta, _ prototype.Object) int {
+    for _, item := range Pool {
+        if item.Type != LINE {
+            continue
+        }
+
+        if meta := item.Meta; meta != nil {
+            fmt.Printf("%s\t%s\t%s\n", meta.Flag, meta.Key, meta.Details)
+        }
+    }
+
+    return state.Done
+}
+
+func Display(_ *Item, meta *Meta, _ prototype.Object) int {
+    if meta != nil {
+        fmt.Println(meta.Details)
+    }
+
+    return state.Done
+}
+
+func SetObject(_ *Item, meta *Meta, value prototype.Object) int {
+    if meta == nil || value == nil {
+        return state.Error
+    }
+
     meta.Value = value
-    return 0
+
+    return state.Ok
 }
 
 /*

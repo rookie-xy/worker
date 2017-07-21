@@ -1,5 +1,22 @@
 package state
 
+const (
+    Ok       = 0
+    Error    = -1
+    Again    = -2
+    Busy     = -3
+    Done     = -4
+    Declined = -5
+    Abort    = -6
+)
+
+const (
+    RELOAD = 1
+    RECONFIGURE = 2
+    EXIT = 3
+)
+
+/*
 type ModileAlertStater interface {
 	Alert() string
 }
@@ -33,3 +50,4 @@ type MobileAlertSong struct {
 func (self *MobileAlertSong) Alert() string {
 	return "Белые розы, Белые розы. Беззащитны шипы..."
 }
+*/

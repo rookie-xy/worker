@@ -3,6 +3,7 @@ package module
 import (
     "github.com/rookie-xy/worker/src/log"
     "fmt"
+    "github.com/rookie-xy/worker/src/state"
 )
 
 const (
@@ -29,6 +30,8 @@ type Template interface {
 type NewFunc func(log log.Log) Template
 var Pool map[string]*NewFunc
 
+
+// facade
 type module struct {
     log.Log
     configure Module
@@ -64,6 +67,22 @@ func (r *module) Main() {
 }
 
 func (r *module) Exit(code int) {
+        // 重新加载
+    /*
+    select {
+
+    case <- RELOAD:
+
+    case <- RECONFIGURE:
+
+    case <- EXIT:
+        for _, module := range r.children {
+            module.Exit()
+        }
+    }
+    */
+
+
     for _, module := range r.modules {
         module.Exit(code)
     }
@@ -80,13 +99,13 @@ func (r *module) Configure(configure Module) int {
         r.configure = configure
 
     } else {
-        return -1
+        return state.Error
     }
 
     r.configure.Init()
     r.configure.Main()
 
-    return 0
+    return state.Ok
 }
 
 func Setup(key string, log log.Log) Template {

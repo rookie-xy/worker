@@ -53,7 +53,6 @@ func (r *singleton) Command(key string, value []command.Item) {
 func (r *singleton) Module(key string, value module.NewFunc) {
     if module.Pool == nil {
         module.Pool = make(map[string]*module.NewFunc)
-
     }
 
     if _, ok := module.Pool[key]; !ok {
