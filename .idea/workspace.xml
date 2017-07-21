@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af94c93d-bc83-4f67-a0fb-17682d92d410" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/run/run.go" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/command/command.go" afterPath="$PROJECT_DIR$/src/command/command.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/module.go" afterPath="$PROJECT_DIR$/src/module/module.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/register/register.go" afterPath="$PROJECT_DIR$/src/register/register.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/state.go" afterPath="$PROJECT_DIR$/src/state/state.go" />
     </list>
     <ignored path="worker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,8 +39,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+            <state relative-caret-position="-399">
+              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
               <folding>
                 <element signature="e#14#360#0" expanded="true" />
               </folding>
@@ -63,6 +58,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="builder.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/builder/builder.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+              <folding>
+                <element signature="e#17#206#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="event.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/event/event.go">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,35 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/register/register.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-              <folding>
-                <element signature="e#18#130#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="builder.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/builder/builder.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-              <folding>
-                <element signature="e#17#206#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="command.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/command/command.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+            <state relative-caret-position="714">
+              <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -110,7 +93,7 @@
       <file leaf-file-name="module.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/module.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-33">
+            <state relative-caret-position="2100">
               <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
               <folding />
             </state>
@@ -163,8 +146,8 @@
         <option value="$PROJECT_DIR$/src/run/run.go" />
         <option value="$PROJECT_DIR$/src/module/module.go" />
         <option value="$PROJECT_DIR$/src/state/state.go" />
-        <option value="$PROJECT_DIR$/src/command/command.go" />
         <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/src/command/command.go" />
       </list>
     </option>
   </component>
@@ -253,7 +236,7 @@
     <configuration default="false" name="worker" type="GoRunFileConfiguration" factoryName="Go Single File" temporary="true">
       <module name="worker" />
       <working_directory value="$PROJECT_DIR$" />
-      <parameters value="-c file -p /log/bash/worker.yaml -f yaml" />
+      <parameters value="-h" />
       <filePath value="$PROJECT_DIR$/main.go" />
       <method />
     </configuration>
@@ -666,7 +649,7 @@
       <workItem from="1500266095641" duration="1499000" />
       <workItem from="1500345773267" duration="10544000" />
       <workItem from="1500434626992" duration="12471000" />
-      <workItem from="1500519388814" duration="16682000" />
+      <workItem from="1500519388814" duration="20920000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1498648610794</created>
@@ -700,7 +683,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153598000" />
+    <option name="totallyTimeSpent" value="157836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -712,7 +695,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="165" y="124" width="1101" height="544" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41358024" sideWeight="0.49375" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41358024" sideWeight="0.49375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.187251" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -944,6 +927,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1134">
           <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <element signature="e#19#232#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,10 +999,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/register/register.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
+        <state relative-caret-position="1155">
           <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding>
-            <element signature="e#18#130#0" expanded="true" />
+            <element signature="e#18#130#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1029,36 +1015,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/module.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2100">
+          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/builder/builder.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+        <state relative-caret-position="282">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
           <folding>
             <element signature="e#17#206#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/module.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/command/command.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        <state relative-caret-position="714">
+          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+        <state relative-caret-position="-399">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
           <folding>
             <element signature="e#14#360#0" expanded="true" />
           </folding>

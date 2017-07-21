@@ -51,7 +51,7 @@ func List(_ *Item, _ *Meta, _ prototype.Object) int {
         }
 
         if meta := item.Meta; meta != nil {
-            fmt.Printf("%s\t%s\t%s\n", meta.Flag, meta.Key, meta.Details)
+            fmt.Printf("%s\t%s\t\t%s\n", meta.Flag, meta.Key, meta.Details)
         }
     }
 

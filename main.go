@@ -15,9 +15,10 @@ import (
 )
 
 var (
-    version = &command.Meta{ "-v", "version", "0.0.1", "version 0.0.1"    }
-    help    = &command.Meta{ "-h", "help",    "", "help infomation"     }
-    test    = &command.Meta{ "-t", "test",    false, "test configure file" }
+    version = &command.Meta{ "-v",  "version", "0.0.1", "Display engine version, golang version, " +
+                                                        "system architecture and other information"   }
+    help    = &command.Meta{ "-h",  "help",    "",      "Assist information on how to use the system" }
+    check   = &command.Meta{ "-cc", "check",   false,   "Pre check before system startup"             }
 )
 
 var commands = []command.Item{
@@ -37,17 +38,16 @@ var commands = []command.Item{
       0,
       nil },
 
-    { test,
+    { check,
       command.LINE,
       module.Worker,
       command.SetObject,
-      unsafe.Offsetof(test.Value),
+      unsafe.Offsetof(check.Value),
       nil },
 
 }
 
 func init() {
-    // ok
     for _, item := range commands {
         command.Pool = append(command.Pool, item)
     }
