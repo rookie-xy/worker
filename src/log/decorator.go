@@ -1,7 +1,9 @@
 package log
 
+import "github.com/rookie-xy/worker/src/prototype"
+
 type Log interface {
-    Print()
+    Print(a prototype.Object)
 }
 
 type log struct {
@@ -12,7 +14,7 @@ func New() *log {
     return &log{}
 }
 
-func (r *log) Print() {
+func (r *log) Print(a prototype.Object) {
     return
 }
 /*
