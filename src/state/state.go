@@ -7,7 +7,8 @@ const (
     Busy     = -3
     Done     = -4
     Declined = -5
-    Abort    = -6
+    Ignore   = -6
+    Abort    = -7
 )
 
 const (

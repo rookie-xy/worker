@@ -1,7 +1,7 @@
 package prototype
 
 type Prototype interface {
-    Clone() Object
+    Clone() Prototype
 }
 
 type Object interface {
