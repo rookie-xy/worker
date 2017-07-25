@@ -9,7 +9,7 @@ type Subject interface {
 
 type Observer interface {
    	//Update(state string)
-    Update(data prototype.Object)
+    Update(data prototype.Object) int
     //Create(data prototype.Object)
 }
 

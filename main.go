@@ -10,6 +10,7 @@ import (
     "github.com/rookie-xy/worker/src/log"
     "github.com/rookie-xy/worker/src/observer"
     "github.com/rookie-xy/worker/src/state"
+ _ "github.com/rookie-xy/plugins"
 
     "github.com/rookie-xy/modules/inputs"
 )

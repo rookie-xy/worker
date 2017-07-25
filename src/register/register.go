@@ -4,6 +4,8 @@ import (
     "sync"
     "github.com/rookie-xy/worker/src/command"
     "github.com/rookie-xy/worker/src/module"
+//    "github.com/rookie-xy/worker/src/plugin"
+    "github.com/rookie-xy/worker/src/plugin/codec"
 )
 
 // singleton
@@ -42,6 +44,10 @@ func Module(scope, name string, items []command.Item, new module.NewFunc) {
     if new != nil {
         merge.Module(key, new)
     }
+}
+
+func Codecs(key string, value codec.Codec) {
+    codec.Plugins = append(codec.Plugins, value)
 }
 
 func (r *singleton) Command(key string, value []command.Item) {
