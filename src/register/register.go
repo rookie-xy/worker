@@ -44,12 +44,6 @@ func Module(scope, name string, items []command.Item, new module.NewFunc) {
     }
 }
 
-/*
-func Codecs(key string, value codec.Codec) {
-    codec.Plugins = append(codec.Plugins, value)
-}
-*/
-
 func (r *singleton) Command(key string, value []command.Item) {
     for _, e := range value {
         command.Pool = append(command.Pool, e)

@@ -9,6 +9,7 @@ import (
 const (
     Worker = "worker"
     Configure = "configure"
+    Plugins = "plugins"
     Inputs = "inputs"
     Outputs = "outputs"
     Channels = "channels"

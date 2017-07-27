@@ -1,44 +1,25 @@
 package factory
 
 import (
-    "github.com/rookie-xy/worker/src/configure"
-    "github.com/rookie-xy/worker/src/module"
-
-    "github.com/rookie-xy/modules/inputs"
+    "fmt"
+    "github.com/rookie-xy/worker/src/plugin/codec"
 )
 
-// abstract factory
-type Factory interface {
-    GetModule(name string) module.Module
-}
-
-type factory struct {
-    log.Log
-}
-
-func New(log log.Log) *factory {
-    return &factory{
-        Log: log,
-    }
-}
-
-func (r *factory) GetModule(name string) module.Module {
-
-    if name == "" {
-        return nil
+// factory method
+func Codec(cfg *codec.Config) (codec.Codec, error) {
+    key := "json"
+    if name := cfg.Name; name != "" {
+        key = name
     }
 
-    switch name {
-
-    case "configure":
-        return configure.Factory(name)
-
-    case inputs.Name:
-        return inputs.Factory(name)
+    method := codec.Codecs[key]
+    if method == nil {
+        return nil, fmt.Errorf("'%v' output codec is not available", key)
     }
 
-    return nil
+    return method(cfg)
 }
+
 
 /*
 type Creater interface {
