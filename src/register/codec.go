@@ -2,7 +2,7 @@ package register
 
 import (
     "fmt"
-    "github.com/rookie-xy/worker/src/plugin/codec"
+    "github.com/rookie-xy/worker/src/codec"
 )
 
 func Codec(name string, f codec.Factory) {

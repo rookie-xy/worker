@@ -2,7 +2,7 @@ package factory
 
 import (
     "fmt"
-    "github.com/rookie-xy/worker/src/plugin/codec"
+    "github.com/rookie-xy/worker/src/codec"
     "github.com/rookie-xy/worker/src/observer"
 )
 
