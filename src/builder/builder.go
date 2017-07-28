@@ -1,14 +1,15 @@
 package builder
 
 import (
+    "fmt"
+
     "github.com/rookie-xy/worker/src/module"
-    "github.com/rookie-xy/modules/configure"
     "github.com/rookie-xy/worker/src/log"
-    "github.com/rookie-xy/worker/src/observer"
+    "github.com/rookie-xy/worker/src/factory"
 )
 
 type Builder interface {
-    Configure(m module.Module) int
+    Configure(m module.Template) int
     module.Module
 }
 
@@ -21,22 +22,31 @@ func Directors(b Builder) *Director {
     return &Director{build: b}
 }
 
-func (r *Director) Construct(core map[string]observer.Observer) {
+func (r *Director) Construct(core []string) {
     scope := module.Worker
+    key   := scope + "." + module.Configure
 
-    configure := configure.New(nil)
-    if configure != nil {
-        for name, observer := range core {
-            configure.Attach(observer)
+    configure := module.Setup(key, r.Log)
+    if configure == nil {
+        fmt.Println("Not found configure module")
+        return
+    }
 
-            key := scope + "_" + name
-
+    subject := factory.Subject(module.Configure)
+    if subject != nil {
+        for _, name := range core {
+            key := scope + "." + name
             if module := module.Setup(key, r.Log); module != nil {
                 r.build.Load(module)
+            }
+
+            if f := factory.Observer(name); f != nil {
+                subject.Attach(f)
             }
         }
 
     } else {
+        fmt.Println("Not found configure subject")
         return
     }
 

@@ -8,9 +8,7 @@ import (
     "github.com/rookie-xy/worker/src/module"
     "github.com/rookie-xy/worker/src/builder"
     "github.com/rookie-xy/worker/src/log"
-    "github.com/rookie-xy/worker/src/observer"
     "github.com/rookie-xy/worker/src/state"
-    "github.com/rookie-xy/modules/inputs"
 
   _ "github.com/rookie-xy/modules"
 )
@@ -81,8 +79,8 @@ func init() {
 func main() {
     log := log.New()
 
-    core := map[string]observer.Observer{
-        module.Inputs: inputs.New(log),
+    core := []string{
+        module.Inputs,
     }
 
     module := module.New(log)

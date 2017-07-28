@@ -8,10 +8,11 @@ type Subject interface {
 }
 
 type Observer interface {
-   	//Update(state string)
     Update(name string, data prototype.Object) int
-    //Create(data prototype.Object)
 }
+
+var Observers = map[string]Observer{}
+var Subjects = map[string]Subject{}
 
 /*
 type Topic struct {

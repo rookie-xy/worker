@@ -3,6 +3,7 @@ package factory
 import (
     "fmt"
     "github.com/rookie-xy/worker/src/plugin/codec"
+    "github.com/rookie-xy/worker/src/observer"
 )
 
 // factory method
@@ -18,6 +19,38 @@ func Codec(cfg *codec.Config) (codec.Codec, error) {
     }
 
     return method(cfg)
+}
+
+func Subject(name string) observer.Subject {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    subject := observer.Subjects[key]
+    if subject == nil {
+        fmt.Println("Not found subject:", key)
+        return nil
+    } else {
+        fmt.Println("youshu")
+    }
+
+    return subject
+}
+
+func Observer(name string) observer.Observer {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    observer := observer.Observers[key]
+    if observer == nil {
+        fmt.Errorf("'%v' output codec is not available", key)
+        return nil
+    }
+
+    return observer
 }
 
 

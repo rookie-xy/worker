@@ -5,6 +5,8 @@ import (
     "github.com/rookie-xy/worker/src/observer"
 )
 
+const Name = "input"
+/*
 type Input struct {
     observers []observer.Observer
     Data prototype.Object
@@ -39,3 +41,4 @@ func (r *Input) Create() prototype.Object {
     //return c
     return nil
 }
+*/

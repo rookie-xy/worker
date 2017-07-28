@@ -22,20 +22,20 @@ type Module interface {
 }
 
 // template
+type NewFunc func(log log.Log) Template
+
 type Template interface {
     Init()
     Main()
     Exit(code int)
 }
 
-type NewFunc func(log log.Log) Template
-var Pool map[string]*NewFunc
-
+var Pool = map[string]*NewFunc{}
 
 // facade
 type module struct {
     log.Log
-    configure Module
+    configure Template
     modules   []Template
 }
 
@@ -95,7 +95,7 @@ func (r *module) Load(module Template) {
     }
 }
 
-func (r *module) Configure(configure Module) int {
+func (r *module) Configure(configure Template) int {
     if configure != nil {
         r.configure = configure
 
@@ -114,7 +114,7 @@ func Setup(key string, log log.Log) Template {
         goto J_RET
     }
 
-    if this, ok := Pool[key]; ok {
+    if this, exist := Pool[key]; exist {
         if new := *this; new != nil {
             return new(log)
         } else {
@@ -122,7 +122,7 @@ func Setup(key string, log log.Log) Template {
         }
 
     } else {
-        fmt.Println("Not found key: ", key)
+        fmt.Println("Not found keyaaaaaaaaaa: ", key)
     }
 
 J_RET:

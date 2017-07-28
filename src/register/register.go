@@ -4,6 +4,7 @@ import (
     "sync"
     "github.com/rookie-xy/worker/src/command"
     "github.com/rookie-xy/worker/src/module"
+    "fmt"
 )
 
 // singleton
@@ -27,7 +28,7 @@ func Module(scope, name string, items []command.Item, new module.NewFunc) {
 
     key := ""
     if scope != key && name != key {
-        key = scope+"_"+name
+        key = scope + "." + name
 
     } else {
         return
@@ -51,11 +52,9 @@ func (r *singleton) Command(key string, value []command.Item) {
 }
 
 func (r *singleton) Module(key string, value module.NewFunc) {
-    if module.Pool == nil {
-        module.Pool = make(map[string]*module.NewFunc)
-    }
 
-    if _, ok := module.Pool[key]; !ok {
+    if _, exist := module.Pool[key]; !exist {
+        fmt.Println("register: ", key)
         module.Pool[key] = &value
     }
 }
