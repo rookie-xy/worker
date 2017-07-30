@@ -4,6 +4,7 @@ import (
     "fmt"
     "github.com/rookie-xy/worker/src/codec"
     "github.com/rookie-xy/worker/src/observer"
+    "github.com/rookie-xy/worker/src/channel"
 )
 
 // factory method
@@ -31,6 +32,7 @@ func Subject(name string) observer.Subject {
     if subject == nil {
         fmt.Println("Not found subject:", key)
         return nil
+
     } else {
         fmt.Println("youshu")
     }
@@ -51,6 +53,36 @@ func Observer(name string) observer.Observer {
     }
 
     return observer
+}
+
+func Push(name string) channel.Push {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    method := channel.Channels[key]
+    if method == nil {
+        fmt.Errorf("'%v' output codec is not available", key)
+        return nil
+    }
+
+    return method(name)
+}
+
+func Pull(name string) channel.Pull {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    method := channel.Channels[key]
+    if method == nil {
+        fmt.Errorf("'%v' output codec is not available", key)
+        return nil
+    }
+
+    return method(name)
 }
 
 

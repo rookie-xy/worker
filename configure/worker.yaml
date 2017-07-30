@@ -1,10 +1,10 @@
 inputs:
     - file:
-          group: "customer-gateway-tengine"
+          group: "c-gateway-tengine"
           type: "program_log_no_muiltline"
           paths:
-              - "data/logs/customer_gateway/customer_gateway_access_*.log"
-              - "data/logs/customer_gateway/customer_gateway_access_*.log2"
+              - "data/logs/c_gateway/c_gateway_access_*.log"
+              - "data/logs/c_gateway/c_gateway_access_*.log2"
           publish: "default"
           codec:
               plain: "text"
@@ -35,40 +35,43 @@ inputs:
                   next: ""
 
 channels:
-    - topic:
+    - memory:
           name: "default"
+          size: 8192
 
-    - topic:
-          name: "wms_main"
+    - memory:
+          name: "umc_main"
+          size: 16382
 
-    - topic:
-          name: "pdms"
-#          filter:
-#              grok:
-#                  pattern: "{LOG_LEVEL} -"
+    - memory:
+          name: "dcma_process"
+          size: 16382
+          filter:
+              grok:
+                  pattern: "{LOG_LEVEL} -"
 
 outputs:
     stdout:
         subscribe:
-            - "pdms"
-            - "pms"
+            - "tydbll"
+            - "kuyhj"
 
 #    kafka:
 #        subscribe:
-#            - "wms_main"
-#            - "pdms"
+#            - "udms_main"
+#            - "adms"
 
 #        broker:
-#            - "10.0.0.42:9092"
-#            - "10.0.0.43:9092"
-#            - "10.0.0.44:9092"
+#            - "10.21.21.82:9092"
+#            - "10.21.21.83:9092"
+#            - "10.21.21.84:9092"
 
-    elasticsearch:
-        subscribe:
-            - "pdms"
-            - "default"
+#    elasticsearch:
+#        subscribe:
+#            - "cmnbh"
+#            - "default"
 
-        cluster:
-            - "10.0.0.42:9092"
-            - "10.0.0.43:9092"
-            - "10.0.0.44:9092"
+#        cluster:
+#            - "10.21.21.82:9092"
+#            - "10.21.21.83:9092"
+#            - "10.21.21.84:9092"
