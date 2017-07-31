@@ -5,7 +5,7 @@ import (
     "github.com/rookie-xy/worker/src/channel"
 )
 
-func Channel(name string, ch channel.Cannery) {
+func Channel(name string, ch channel.Channel) {
     if _, exists := channel.Channels[name]; exists {
         panic(fmt.Sprintf("this channel '%v' already registered ", name))
     }

@@ -48,7 +48,7 @@ func Observer(name string) observer.Observer {
 
     observer := observer.Observers[key]
     if observer == nil {
-        fmt.Errorf("'%v' output codec is not available", key)
+        fmt.Errorf("'%v' observer is not available", key)
         return nil
     }
 
@@ -61,13 +61,13 @@ func Push(name string) channel.Push {
         key = name
     }
 
-    method := channel.Channels[key]
-    if method == nil {
-        fmt.Errorf("'%v' output codec is not available", key)
+    push := channel.Channels[key]
+    if push == nil {
+        fmt.Errorf("'%v' channel push is not available", key)
         return nil
     }
 
-    return method(name)
+    return push.Clone()
 }
 
 func Pull(name string) channel.Pull {
@@ -76,13 +76,13 @@ func Pull(name string) channel.Pull {
         key = name
     }
 
-    method := channel.Channels[key]
-    if method == nil {
-        fmt.Errorf("'%v' output codec is not available", key)
+    pull := channel.Channels[key]
+    if pull == nil {
+        fmt.Errorf("'%v' channel pull is not available", key)
         return nil
     }
 
-    return method(name)
+    return pull
 }
 
 

@@ -10,6 +10,7 @@ type Channel interface {
 }
 
 type Push interface {
+    Clone() Push
     Push(event.Event) int
 }
 
@@ -17,7 +18,8 @@ type Pull interface {
     Pull() event.Event
 }
 
-var Channels = map[string]Factory{}
+//var Channels = map[string]Factory{}
+var Channels = map[string]Channel{}
 
 type Configure struct {
     Name      string

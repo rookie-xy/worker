@@ -14,10 +14,8 @@ type event struct {
     name string
 }
 
-func New(event Event) *event {
-    return &event{
-        Event: event,
-    }
+func New() *event {
+    return &event{}
 }
 
 func (r *event) Set() {
