@@ -4,7 +4,6 @@ import (
     "sync"
     "github.com/rookie-xy/worker/src/command"
     "github.com/rookie-xy/worker/src/module"
-    "fmt"
 )
 
 // singleton
@@ -54,7 +53,7 @@ func (r *singleton) Command(key string, value []command.Item) {
 func (r *singleton) Module(key string, value module.NewFunc) {
 
     if _, exist := module.Pool[key]; !exist {
-        fmt.Println("register: ", key)
+        //fmt.Println("register: ", key)
         module.Pool[key] = &value
     }
 }

@@ -4,7 +4,7 @@ import (
     "fmt"
     "github.com/rookie-xy/worker/src/codec"
     "github.com/rookie-xy/worker/src/observer"
-    "github.com/rookie-xy/worker/src/channel"
+//    "github.com/rookie-xy/worker/src/channel"
 )
 
 // factory method
@@ -32,9 +32,6 @@ func Subject(name string) observer.Subject {
     if subject == nil {
         fmt.Println("Not found subject:", key)
         return nil
-
-    } else {
-        fmt.Println("youshu")
     }
 
     return subject
@@ -54,7 +51,7 @@ func Observer(name string) observer.Observer {
 
     return observer
 }
-
+/*
 func Push(name string) channel.Push {
     key := ""
     if name != key {
@@ -84,6 +81,7 @@ func Pull(name string) channel.Pull {
 
     return pull
 }
+*/
 
 
 /*

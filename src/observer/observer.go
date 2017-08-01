@@ -8,7 +8,7 @@ type Subject interface {
 }
 
 type Observer interface {
-    Update(name string, data prototype.Object) int
+    Update(data prototype.Object) int
 }
 
 var Observers = map[string]Observer{}
