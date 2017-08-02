@@ -14,10 +14,10 @@ import (
 )
 
 var (
-    version = command.Metas("-v", "version", "0.0.1", "Display engine version, golang version, " +
-                                                        "system architecture and other information"  )
-    help    = command.Metas("-h",  "help",    "",      "Assist information on how to use the system" )
-    check   = command.Metas("-cc", "check",   false,   "Pre check before system startup"             )
+    version = command.Metas("-v", "version", "0.0.1", state.On, "Display engine version, golang version, " +
+                                                                "system architecture and other information"   )
+    help    = command.Metas("-h",  "help",    "",     state.On, "Assist information on how to use the system" )
+    check   = command.Metas("-cc", "check",   false,  state.On, "Pre check before system startup"             )
 )
 
 var commands = []command.Item{
@@ -28,7 +28,6 @@ var commands = []command.Item{
       command.Display,
       0,
       nil },
-
 
     { help,
       command.LINE,

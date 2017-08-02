@@ -26,10 +26,11 @@ type Meta struct {
     Flag     string
     Key      string
     Value    prototype.Object
+    OnOff    bool
     Details  string
 }
 
-func Metas(flag string, key string, value prototype.Object, details string) *Meta {
+func Metas(flag string, key string, value prototype.Object, OnOff bool, details string) *Meta {
     return &Meta{ flag, key, value, details }
 }
 

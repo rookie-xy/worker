@@ -1,6 +1,11 @@
 package state
 
 const (
+    On  = true
+    Off = false
+)
+
+const (
     Ok       = 0
     Error    = -1
     Again    = -2
