@@ -30,8 +30,8 @@ type Meta struct {
     Details  string
 }
 
-func Metas(flag string, key string, value prototype.Object, OnOff bool, details string) *Meta {
-    return &Meta{ flag, key, value, details }
+func Metas(flag string, key string, value prototype.Object, onOff bool, details string) *Meta {
+    return &Meta{ flag, key, value, onOff, details }
 }
 
 var Pool []Item
