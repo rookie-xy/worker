@@ -46,6 +46,7 @@ func New(log log.Log) *module {
 }
 
 func (r *module) Init() {
+    fmt.Println("mmmmmmmmmmmmmmm: ", len(r.modules))
     for _, module := range r.modules {
         if module != nil {
             module.Init()
@@ -104,7 +105,7 @@ func (r *module) Configure(configure Template) int {
     }
 
     r.configure.Init()
-    r.configure.Main()
+    go r.configure.Main()
 
     return state.Ok
 }

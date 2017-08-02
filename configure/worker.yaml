@@ -37,17 +37,17 @@ inputs:
 channels:
     - memory:
           name: "default"
-          type: "pipeline"
+          mode: "pipeline"
           size: 8192
 
     - memory:
           name: "umc_main"
-          type: "queue"
+          mode: "queue"
           size: 16382
 
     - memory:
           name: "dcma_process"
-          type: "stream"
+          mode: "stream"
           size: 16382
           filter:
               grok:

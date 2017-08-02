@@ -29,12 +29,29 @@ type Meta struct {
     Details  string
 }
 
+func Metas(flag string, key string, value prototype.Object, details string) *Meta {
+    return &Meta{ flag, key, value, details }
+}
+
 var Pool []Item
 
 func Setup(flag, value string) int {
     for _, item := range Pool {
 
         if item.Type != LINE || item.Meta.Flag != flag {
+            continue
+        }
+
+        return item.Set(&item, item.Meta, value)
+    }
+
+    return state.Error
+}
+
+func File(key string, value prototype.Object) int {
+    for _, item := range Pool {
+
+        if item.Type != FILE || item.Meta.Key != key {
             continue
         }
 

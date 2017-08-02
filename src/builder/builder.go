@@ -37,10 +37,12 @@ func (r *Director) Construct(core []string) {
         for _, name := range core {
             key := scope + "." + name
             if module := module.Setup(key, r.Log); module != nil {
+                fmt.Println("rrrrrrrrrrrrrrrrr", key)
                 r.build.Load(module)
             }
 
             if f := factory.Observer(name); f != nil {
+                fmt.Println(name)
                 subject.Attach(f)
             }
         }

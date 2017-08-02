@@ -14,10 +14,10 @@ import (
 )
 
 var (
-    version = &command.Meta{ "-v",  "version", "0.0.1", "Display engine version, golang version, " +
-                                                        "system architecture and other information"   }
-    help    = &command.Meta{ "-h",  "help",    "",      "Assist information on how to use the system" }
-    check   = &command.Meta{ "-cc", "check",   false,   "Pre check before system startup"             }
+    version = command.Metas("-v", "version", "0.0.1", "Display engine version, golang version, " +
+                                                        "system architecture and other information"  )
+    help    = command.Metas("-h",  "help",    "",      "Assist information on how to use the system" )
+    check   = command.Metas("-cc", "check",   false,   "Pre check before system startup"             )
 )
 
 var commands = []command.Item{
@@ -80,6 +80,7 @@ func main() {
     log := log.New()
 
     core := []string{
+        module.Channels,
         module.Inputs,
     }
 
