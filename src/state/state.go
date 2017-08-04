@@ -1,8 +1,8 @@
 package state
 
 const (
-    On  = true
-    Off = false
+    Enable  = true
+    Disable = false
 )
 
 const (

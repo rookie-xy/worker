@@ -18,6 +18,7 @@ type Item struct {
     Type    int
     Scope   string
     Set     SetFunc
+    State   bool
     Offset  uintptr
     Load    prototype.Object
 }
@@ -26,12 +27,11 @@ type Meta struct {
     Flag     string
     Key      string
     Value    prototype.Object
-    OnOff    bool
     Details  string
 }
 
-func Metas(flag string, key string, value prototype.Object, onOff bool, details string) *Meta {
-    return &Meta{ flag, key, value, onOff, details }
+func Metas(flag string, key string, value prototype.Object, details string) *Meta {
+    return &Meta{ flag, key, value, details }
 }
 
 var Pool []Item
