@@ -54,10 +54,27 @@ channels:
                   pattern: "{LOG_LEVEL} -"
 
 outputs:
-    stdout:
-        subscribe:
-            - "tydbll"
-            - "kuyhj"
+#    - proxy:
+#          limit: "10m"
+#          health: "http://10.78.1.45:8890/health"
+#          subscribe:
+#              - "tydbll"
+#              - "kuyhj"
+#
+#          sender:
+#              stdout: "-1"
+
+    - transport:
+          subscribe:
+              - "tydbll"
+              - "kuyhj"
+
+          sender:
+              kafka:
+                  broker:
+                      - "10.21.21.82:9092"
+                      - "10.21.21.83:9092"
+                      - "10.21.21.84:9092"
 
 #    kafka:
 #        subscribe:

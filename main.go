@@ -82,6 +82,7 @@ func main() {
 
     core := []string{
         module.Channels,
+        module.Outputs,
         module.Inputs,
     }
 

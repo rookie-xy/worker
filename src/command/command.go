@@ -49,10 +49,12 @@ func Setup(flag, value string) int {
     return state.Error
 }
 
-func File(key string, value prototype.Object) int {
+func File(nameSpace, key string, value prototype.Object) int {
     for _, item := range Pool {
 
-        if item.Type != FILE || item.Meta.Key != key {
+        if item.Scope != nameSpace ||
+                 item.Type != FILE || item.Meta.Key != key {
+
             continue
         }
 

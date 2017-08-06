@@ -8,21 +8,22 @@ import (
 type Factory func(log.Log, int) (Channel, error)
 
 type Channel interface {
+    Clone() Channel
     Push
     Pull
 }
 
 type Push interface {
-    Clone() Push
     Push(event.Event) int
 }
 
 type Pull interface {
-    Pull() event.Event
+    Pull(size int) (event.Event, int)
 }
 
 var Channels = map[string]Factory{}
-//var Channels = map[string]Channel{}
+var Publish = map[string]Channel{}
+var Subscribe = map[string]Channel{}
 
 type Configure struct {
     Name string
