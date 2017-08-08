@@ -5,6 +5,8 @@ import (
     "github.com/rookie-xy/worker/src/codec"
     "github.com/rookie-xy/worker/src/observer"
 //    "github.com/rookie-xy/worker/src/channel"
+    "github.com/rookie-xy/worker/src/client"
+    "errors"
 )
 
 // factory method
@@ -82,6 +84,21 @@ func Pull(name string) channel.Pull {
     return pull
 }
 */
+
+func Client(name string) (client.Client, error) {
+    key := ""
+    if name != key {
+        key = name
+    }
+
+    factory := client.Clients[key]
+    if factory == nil {
+        fmt.Errorf("'%v' sender is not available", key)
+        return nil, errors.New("client error")
+    }
+
+    return factory(name)
+}
 
 
 /*

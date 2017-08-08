@@ -95,6 +95,21 @@ func SetObject(_ *Item, meta *Meta, value prototype.Object) int {
 
     return state.Ok
 }
+/*
+func SetArray(_ *Item, meta *Meta, value prototype.Object) int {
+    if meta == nil || value == nil {
+        return state.Error
+    }
+
+    for i, v := range value.([]interface{}) {
+        fmt.Println("yyyyyyyyyyhhhhhhhhhhhhhhhhhh", i, v)
+    }
+
+    //meta.Value = value
+
+    return state.Ok
+}
+*/
 
 /*
 type Command interface {

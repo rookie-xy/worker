@@ -54,6 +54,28 @@ channels:
                   pattern: "{LOG_LEVEL} -"
 
 outputs:
+    - sender:
+          subscribe:
+              - "tydbll"
+              - "kuyhj"
+
+          client:
+              kafka:
+                  limit: "10m"
+                  task: 20
+                  broker:
+                      - "10.21.21.82:9092"
+                      - "10.21.21.83:9092"
+                      - "10.21.21.84:9092"
+
+              elasticsearch:
+                  test: "ab"
+                  thread: 20
+                  cluster:
+                      - "10.21.21.82:9092"
+                      - "10.21.21.83:9092"
+                      - "10.21.21.84:9092"
+
 #    - proxy:
 #          limit: "10m"
 #          health: "http://10.78.1.45:8890/health"
@@ -61,37 +83,5 @@ outputs:
 #              - "tydbll"
 #              - "kuyhj"
 #
-#          sender:
+#          client:
 #              stdout: "-1"
-
-    - transport:
-          subscribe:
-              - "tydbll"
-              - "kuyhj"
-
-          sender:
-              kafka:
-                  broker:
-                      - "10.21.21.82:9092"
-                      - "10.21.21.83:9092"
-                      - "10.21.21.84:9092"
-
-#    kafka:
-#        subscribe:
-#            - "udms_main"
-#            - "adms"
-
-#        broker:
-#            - "10.21.21.82:9092"
-#            - "10.21.21.83:9092"
-#            - "10.21.21.84:9092"
-
-#    elasticsearch:
-#        subscribe:
-#            - "cmnbh"
-#            - "default"
-
-#        cluster:
-#            - "10.21.21.82:9092"
-#            - "10.21.21.83:9092"
-#            - "10.21.21.84:9092"
