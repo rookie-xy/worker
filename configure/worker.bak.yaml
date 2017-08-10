@@ -20,6 +20,10 @@ inputs:
           codec.line:
               match: "\n"
               max: 2048
+#          codec:
+#              line:
+#                  match: "\n"
+#                  max: 2048
 
     - file:
           group: "test123"
@@ -35,41 +39,28 @@ inputs:
 
 channels:
     - memory:
-          name: "baidu"
+          name: "default"
           size: 8192
-          publish:
-              channel.pipeline:
-                  size: 16382
+          channel.pipeline: "publish"
 
-          subscribe:
-              channel.stream:
-                  size: 8192
+          channel.stream:
 
     - memory:
-          name: "alibaba"
+          name: "umc_main"
+          publish: "pipeline"
+          subscribe: "stream"
           size: 16382
-          publish:
-              channel.queue:
-                  size: 16382
-
-          subscribe:
-              channel.stream:
-                  size: 8192
 
     - memory:
-          name: "tencent"
+          name: "dcma_process"
+          publish: "pipeline"
+          subscribe: "stream"
           size: 16382
-          publish:
-              channel.queue:
-                  size: 16382
-
-          subscribe:
-              channel.pipeline:
-                  size: 8192
-
           filter.grok:
               pattern: "{LOG_LEVEL} -"
-
+#          filter:
+#              grok:
+#                  pattern: "{LOG_LEVEL} -"
 
 outputs:
     - sender:
@@ -106,3 +97,25 @@ outputs:
 #
 #          client:
 #              stdout: "-1"
+
+
+
+
+
+
+
+
+
+
+
+
+#          client:
+#              kafka:
+#                  topic: "baidu"
+#                  broker:
+#                      - "10.21.21.82:9092"
+#                      - "10.21.21.83:9092"
+#                      - "10.21.21.84:9092"
+
+
+
